@@ -65,21 +65,6 @@ class Image(models.Model):
     def __str__(self):
         return self.image_caption
 
-# class Preference(models.Model):
-#     '''
-#     http://www.learningaboutelectronics.com/Articles/How-to-add-like-dislike-buttons-to-a-post-Python-Django.php
-#     '''
-#     user= models.ForeignKey(User)
-#     post= models.ForeignKey(Image)
-#     value= models.IntegerField()
-#     date= models.DateTimeField(auto_now= True)
-
-    
-#     def __str__(self):
-#         return str(self.user) + ':' + str(self.post) +':' + str(self.value)
-
-#     class Meta:
-#        unique_together = ("user", "post", "value")
 
 class Comments(models.Model):
     comment = models.CharField(max_length = 250)
