@@ -1,0 +1,54 @@
+{% load bootstrap3 %}
+
+{% block content %}
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-white bg-white static-top" style="background-color: white; margin-bottom: 8%; border-bottom: 1px solid rgba(44, 41, 41, 0.089);">
+    <div class="container">
+
+      <div class="home">
+        <a class="navbar-brand" href="{%url 'welcome'%}">
+          <img src="../static/phootos/instagram.png" width="50" height="50" style="border-right: 1px solid black;">
+          <span style="font-family: 'Satisfy', cursive; color: black; margin-left: 5%; font-size: 140%">
+            Instagram
+          </span>
+
+        </a>
+      </div>
+
+      <form action="{% url 'searchs'%}" class="search text-center" style="margin-top: 2%; margin-left:5%;">
+        <input type="text" class="input-sm form-control" name="username" placeholder="Search">
+      </form>
+
+      <div class="account">
+
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'myprofile'%}" style="color: black">Profile</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link glyphicon glyphicon-camera" href="{%url 'upload'%}" style="color: black">upload</a>
+          </li>
+          {% if user.is_authenticated %}
+          <div class="dropdown" style="margin-top: 4%">
+            <a class="glyphicon glyphicon-cog" style=" color: black; " data-toggle="dropdown">Account</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{%url 'edit'%}" style="color: black">Add profile</a>
+              <a class="dropdown-item" href="/accounts/password/change" style="color: black">Change Password</a>
+              <a class="dropdown-item" href="/logout" style="color: black">Logout</a>
+            </div>
+          </div>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/accounts/login" style="color: black">Login</a>
+          </li>
+        </ul>
+        {% endif %}
+      </div>
+
+    </div>
+    </div>
+  </nav>
+</body>
+{% endblock %}
