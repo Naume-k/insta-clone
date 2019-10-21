@@ -91,3 +91,9 @@ def add_comment(request, image_id):
 def following(request):
     followingss = Followers.objects.filter(user_from = request.user)
 
+def likes(request,id):
+    likes=1
+    image=Image.objects.get(id=id)
+    image.likes=image.likes+1
+    image.save()
+    return redirect("welcome")

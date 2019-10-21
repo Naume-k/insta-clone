@@ -24,15 +24,15 @@
 
         <ul class="nav justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="{%url 'myprofile'%}" style="color: black">Profile</a>
+            <a class="nav-link" href="{%url 'myprofile'%}" style="color: grey;"><i class="fa fa-user" aria-hidden="true" style="font-size:34px;"></i></a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link glyphicon glyphicon-camera" href="{%url 'upload'%}" style="color: black">upload</a>
+            <a class="nav-link " href="{%url 'upload'%}" style="color: black">upload</a>
           </li>
           {% if user.is_authenticated %}
           <div class="dropdown" style="margin-top: 4%">
-            <a class="glyphicon glyphicon-cog" style=" color: black; " data-toggle="dropdown">Account</a>
+            <a style=" color: black; " data-toggle="dropdown">Account</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="{%url 'edit'%}" style="color: black">Add profile</a>
               <a class="dropdown-item" href="/accounts/password/change" style="color: black">Change Password</a>

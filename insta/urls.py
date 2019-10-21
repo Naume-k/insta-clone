@@ -10,7 +10,7 @@ urlpatterns=[
     url(r'^myprofile$', views.my_profile, name='myprofile'),
     url(r'^comment/(\d+)/$', views.add_comment, name='comment'),
     url(r'^search/',views.search_users, name = 'searchs'),
-    
+    # url(r'^likes/(?P<id>\d+)',views.likes, name = 'like'),
 ]
 
 if settings.DEBUG:

@@ -20,7 +20,6 @@
             <span style="margin-bottom: 3%"><img src="{{myprof.profile_photo.url}}" class="img-responsive profile_image"><strong>{{ images.user }}</strong></span>
             {% endif %}
     <img src="{{images.image.url}}" height="400" class="img-responsive" alt="Image">     
-
     <div class="card-body">
         <div class="col-md-6">
             <h5> {{images.image_caption}} </h5>
@@ -40,3 +39,4 @@
     {% endfor %}   
 </div>
 {% endblock %}
+    <!-- <a href="{% url 'likes' id=image.id %}">like</a> -->
