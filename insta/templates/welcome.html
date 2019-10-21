@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+
+{% block content %}
+{{block.super}}
+<style>
+    .profile_image {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+</style>
+
+<div class="container" >      
+    {% for images in all_images %}
+
+    <div class="card" style="width: 35rem; margin-top: 6%; margin-left: 20%; ">  
+            {% if myprof%}
+            <span style="margin-bottom: 3%"><img src="{{myprof.profile_photo.url}}" class="img-responsive profile_image"><strong>{{ images.user }}</strong></span>
+            {% endif %}
+    <img src="{{images.image.url}}" height="400" class="img-responsive" alt="Image">     
+
+    <div class="card-body">
+        <div class="col-md-6">
+            <h5> {{images.image_caption}} </h5>
+            <h5> <small>{{images.date|timesince}}</small> </h5>
+        </div>
+      <div  class="col-md-6">
+      <img src="https://images.all-free-download.com/images/graphiclarge/heart_icon_deselected_144186.jpg" alt="like" style="width:8%; ">
+      </div>
+        
+     <hr> 
+        {% for comments in images.comments_set.all %}
+        <h5> {{comments.comment}} </h5>
+        {% endfor %}
+        <a href="{%url 'comment' images.id%}" class="btn btn-default">Comment</a>
+    </div>
+    </div>
+    {% endfor %}   
+</div>
+{% endblock %}
