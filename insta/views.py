@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http  import HttpResponse,Http404
-from .models import Image,Profile,Comments,Followers
+from .models import Image,Profile,Comments #,Followers
 from django.contrib.auth.decorators import login_required
 from .forms import NewProfileForm,NewImageForm,commentForm
-# from rest_framework import authentication, permissions
+
+
 # Create your views here.
 
 @login_required(login_url='/accounts/login/')
@@ -11,7 +12,7 @@ def welcome(request):
     all_images = Image.get_all_images()
     insta_users = Profile.get_all_instagram_users()
     current_user = request.user
-    myprof = Profile.objects.filter(id = current_user.id).first()
+    myprof = Profile.objects.filter(id = current_user.id)#.first()
     mycomm = Comments.objects.filter(id = current_user.id).first()
     return render(request, 'welcome.html', {"all_images":all_images, "insta_users":insta_users, "myprof":myprof, "mycomm":mycomm})
 
@@ -19,7 +20,7 @@ def welcome(request):
 @login_required(login_url='/accounts/login/')
 def add_profile(request):
     current_user = request.user
-    profile = Profile.objects.filter(id = current_user.id).first()
+    profile = Profile.objects.filter(id = current_user.id)
     if request.method == 'POST':
         form = NewProfileForm(request.POST, request.FILES)
         if form.is_valid():

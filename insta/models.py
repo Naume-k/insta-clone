@@ -1,6 +1,7 @@
 from django.db import models
 from tinymce.models import HTMLField
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your models here.
 class Profile(models.Model):
@@ -10,6 +11,7 @@ class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'profile_photos/', null=True)
     bio = HTMLField()
     date = models.DateTimeField(auto_now_add=True)
+    # followers = models.ManyToManyField(User, blank=True, related_name='user_followers')
 
     @classmethod
     def get_all_instagram_users(cls):
@@ -83,10 +85,10 @@ class Comments(models.Model):
 def __str__(self):
         return self.posted_by
 
-class Followers(models.Model):
-    '''
-    https://stackoverflow.com/questions/27587216/get-the-follower-count-in-django
-    '''    
-    from_user = models.ForeignKey(User, related_name='following_set', null = True)
-    to_user = models.ForeignKey(User, related_name='follower_set', null = True)
+# class Followers(models.Model):
+#     '''
+#     https://stackoverflow.com/questions/27587216/get-the-follower-count-in-django
+#     '''    
+#     from_user = models.ForeignKey(User, related_name='following_set', null = True)
+#     to_user = models.ForeignKey(User, related_name='follower_set', null = True)
 

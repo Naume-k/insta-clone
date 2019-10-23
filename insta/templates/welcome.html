@@ -13,30 +13,49 @@
 </style>
 
 <div class="container">
+
     {% for images in all_images %}
 
-    <div class="card" style="width: 35rem; margin-top: 6%; margin-left: 20%; ">
-        {% if myprof%}
-        <span style="margin-bottom: 3%"><img src="{{myprof.profile_photo.url}}" class="img-responsive profile_image"><strong>
-            {{ images.user }}</strong></span>
-        {% endif %}
-        <img src="{{images.image.url}}" height="400" class="img-responsive" alt="Image">
-        <a href="{% url 'like' images.id %}">{{images.likes}}<i class="fa fa-heart" style="color:grey;"></i></a>
+    <div class="card" style="width: 35rem;  margin-left: 20%; ">
         
-        <div class="card-body">
-            <div class="col-md-6">
-                <h5> {{images.image_caption}} </h5>
-                <h5> <small>{{images.date|timesince}}</small> </h5>
+        {% if myprof %}
+
+        <span style="margin-bottom: 3%"><img src="{{ images.myprof.profile_photo.url }}" alt="profile" class="img-responsive profile_image"
+            alt="profile"><strong>{{ images.user }}</strong></span>
+
+        {% endif %}
+        <br><br><br>
+        <img src="{{images.image.url}}" height="600" class="img-responsive" alt="Image">
+        <div class="row">
+            <div class="col-md-1">
+                <a href="{% url 'like' images.id %}"><img src="https://files.slack.com/files-pri/T077KKCG6-FPP2R03QC/insta9.png"
+                        style="width:35px;"></a>
+            </div>
+            <div class="col-md-2">
+                <a href="{%url 'comment' images.id%}" class="btn btn-default"></a><img src="https://cdn4.iconfinder.com/data/icons/vectory-basic/40/comment_2-512.png"
+                    style="width:30px;"></a>
             </div>
 
-            <hr>
-            {% for comments in images.comments_set.all %}
-            <h5> {{comments.comment}} </h5>
-            {% endfor %}
-            <a href="{%url 'comment' images.id%}" class="btn btn-default">Comment</a>
         </div>
+        <p>{{images.likes}}Likes</p>
+
+        <h5> {{images.image_caption}} </h5>
+        <h5> <small>{{images.date|timesince}}</small> </h5>
+
+
+        <hr>
+        {% for comments in images.comments_set.all %}
+        <h6>{{ images.user }}: {{comments.comment}} </h6>
+        {% endfor %}
+
+
     </div>
+    <br><br>
     {% endfor %}
+</div>
 </div>
 {% endblock %}
 <!-- <a href="{% url 'likes' id=image.id %}">like</a> -->
+
+
+<!-- <a href="{% url 'othersprofile' images.user.id %}" style="color: black"></a> -->

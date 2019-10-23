@@ -24,27 +24,20 @@
 
         <ul class="nav justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="{%url 'myprofile'%}" style="color: grey;"><i class="fa fa-user" aria-hidden="true" style="font-size:34px;"></i></a>
+            <a class="nav-link " href="{%url 'upload'%}" style="color: black; "><img src="https://files.slack.com/files-pri/T077KKCG6-FPPGDDKLG/insta10.png"
+                width="30px;"></a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="{%url 'upload'%}" style="color: black">upload</a>
-          </li>
-          {% if user.is_authenticated %}
-          <div class="dropdown" style="margin-top: 4%">
-            <a style=" color: black; " data-toggle="dropdown">settings</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="{%url 'edit'%}" style="color: black">Add profile</a>
-              <a class="dropdown-item" href="/accounts/password/change" style="color: black">Change Password</a>
-              <a class="dropdown-item" href="/logout" style="color: black">Logout</a>
-            </div>
-          </div>
-          {% else %}
+              <a class="nav-link" href="{%url 'myprofile'%}" style="color: grey; margin-top: -9px;"><img src="https://files.slack.com/files-pri/T077KKCG6-FPP2R03QC/insta9.png"
+                width="45px;"></a>
+            </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="/accounts/login" style="color: black">Login</a>
-          </li>
-        </ul>
-        {% endif %}
+              <a class="nav-link" href="{%url 'myprofile'%}" style="color: grey;"><img src="https://files.slack.com/files-pri/T077KKCG6-FPC2K7KPD/insta12.png"
+                  width="30px;"></a>
+            </li>
+
       </div>
 
     </div>
@@ -52,3 +45,5 @@
   </nav>
 </body>
 {% endblock %}
+<!-- <img src="https://files.slack.com/files-pri/T077KKCG6-FPP2R03QC/insta9.png"
+                width="50px;"> -->
